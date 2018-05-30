@@ -1,0 +1,30 @@
+function [indices_S_max,S_max,taux_compression] = calcul_S_max(signal,nb_echantillons_par_mesure,n)
+
+    TG = T_Gabor(signal,nb_echantillons_par_mesure);
+    nb_mesures = size(TG,2);
+% 
+%    TG = TG(1:floor(size(TG,1)/2), :);
+% 	[TG,Ind] = sort(abs(TG), 'desc');
+% 
+%     S_max = TG((1:n),:);
+%     indices_S_max = Ind((1:n),:);
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % Determination de la note la plus forte a chaque mesure :
+    indices_S_max = [];
+    S_max = [];
+    for i = 1:nb_mesures
+        [spectre, indices] = sort(abs(TG(:,i)), 'desc');
+        max_spectre = TG(indices(1:n), i);
+        
+        % Lignes utiles pour le script synthese.m :
+        indices_S_max = [indices_S_max indices(1:n)];
+        S_max = [S_max max_spectre];
+    end
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    taux_compression = size(TG,1) / n;
+% 	S_max = S_max';
+%     indices_S_max = indices_S_max';
+
+end
