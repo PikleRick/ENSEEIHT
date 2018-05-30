@@ -1,0 +1,8 @@
+Pour executer notre programme, il faut lancer les scripts suivant (dans l'ordre):
+- superpicels.m
+- binarisation.m
+- axe_median.m
+- TP_maillage.m
+- TP_maillage_suite.m
+
+Remarque : le fichier "images" étant très volumineux, il a été supprimé de notre rendu car faisant dépasser les 20Mo autorisé pour un dépot.
